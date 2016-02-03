@@ -3,9 +3,10 @@
 import urllib.request
 import json
 import codecs
-
+import time
 
 def crawl_dabang(station_id):
+
     request = 'http://www.dabangapp.com/api/2/room/list/subway?page=1&filters=%7B%22deposit-range%22%3A%5B0%2C999999%5D%2C%22price-range%22%3A%5B0%2C999999%5D%2C%22room-type%22%3A%5B0%5D%2C%22location%22%3A%5B%5B126.83457005023877%2C37.552415613220674%5D%2C%5B126.87572586536328%2C37.56966333742125%5D%5D%7D&id=' + str(station_id) + '&_=1454418074181'
 
     response = urllib.request.urlopen(request)
@@ -51,15 +52,14 @@ def averaging(json_object) : #각 역의 검색 결과에서 방들의 보증금
 
         counter += 1
 
-        average_deposit = total_deposit / counter
-        average_deposit = int(round(average_deposit, -1)) # 보증금은 10의자리로 반올림
 
-        average_price = total_price / counter
-        average_price = round(average_price) #월세는 1의자리로 반올림
+    average_deposit = total_deposit / counter
+    average_deposit = int(round(average_deposit, -1)) # 보증금은 10의자리로 반올림
 
-        return average_deposit, average_price
-    else :
-        return False
+    average_price = total_price / counter
+    average_price = round(average_price) #월세는 1의자리로 반올림
+
+    return average_deposit, average_price
 
 if __name__ == "__main__" :
 
