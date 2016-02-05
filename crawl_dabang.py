@@ -9,7 +9,7 @@ from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 
 def crawl_dabang(station_id):
 
-    request = 'http://www.dabangapp.com/api/2/room/list/subway?page=1&id=' + str(station_id)
+    request = 'http://www.dabangapp.com/api/2/room/list/subway?filters={"room-type":[0],"price-range":[10,999999]}&page=1&id=' + str(station_id)
 
     response = urllib.request.urlopen(request)
 
@@ -56,10 +56,10 @@ def averaging(json_object) : #각 역의 검색 결과에서 방들의 보증금
 
 
     average_deposit = total_deposit / counter
-    average_deposit = int(round(average_deposit, -1)) # 보증금은 10의자리로 반올림
+    average_deposit = int(round(average_deposit, -2)) # 보증금은 10의자리로 반올림
 
     average_price = total_price / counter
-    average_price = round(average_price) #월세는 1의자리로 반올림
+    average_price = int(round(average_price, -1)) #월세는 1의자리로 반올림
 
     return average_deposit, average_price
 
