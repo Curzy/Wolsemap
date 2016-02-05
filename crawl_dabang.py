@@ -4,10 +4,12 @@ import urllib.request
 import json
 import codecs
 import time
+from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+
 
 def crawl_dabang(station_id):
 
-    request = 'http://www.dabangapp.com/api/2/room/list/subway?page=1&filters=%7B%22deposit-range%22%3A%5B0%2C999999%5D%2C%22price-range%22%3A%5B0%2C999999%5D%2C%22room-type%22%3A%5B0%5D%2C%22location%22%3A%5B%5B126.83457005023877%2C37.552415613220674%5D%2C%5B126.87572586536328%2C37.56966333742125%5D%5D%7D&id=' + str(station_id) + '&_=1454418074181'
+    request = 'http://www.dabangapp.com/api/2/room/list/subway?page=1&id=' + str(station_id)
 
     response = urllib.request.urlopen(request)
 
@@ -61,15 +63,32 @@ def averaging(json_object) : #각 역의 검색 결과에서 방들의 보증금
 
     return average_deposit, average_price
 
+def write(iter, file_object) : #결과를 txt파일에 저장하는 함수
+
+    crawled = crawl_dabang(iter)
+    filtered = filter_by_line(crawled)
+    if filtered != False :
+        average = averaging(crawled)
+        data = str(iter) + " " + str(filtered[0]) + " " + str(filtered[1]) + " " + str(average[0]) + "/" + str(average[1])
+        print(data)
+        file_object.write(data + "\n")
+
 if __name__ == "__main__" :
+
+    start = time.time()
 
     f = open("MetroRentalFee.txt", 'w') #역, 호선, 보증금 월세를 저장하기 위한 파일 오픈
 
-    for i in range(1, 789): #다방 역 인덱스 1 - 788까지 반복
-        crawled = crawl_dabang(i)
-        if filter_by_line(crawled) != False :
-            data = str(i) + " " + str(filter_by_line(crawled)[0]) + " " + str(filter_by_line(crawled)[1]) + " " + str(averaging(crawled)[0]) + "/" + str(averaging(crawled)[1])
-            print(data)
-            f.write(data + "\n")
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        for i in range(1, 789):
+            executor.submit(write, i, f)
 
     f.close()
+
+    duration = time.time() - start
+    print(duration)
+
+
+
+
+
