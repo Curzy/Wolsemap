@@ -4,12 +4,12 @@ import urllib.request
 import json
 import codecs
 import time
-from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+from concurrent.futures import ThreadPoolExecutor
 
 
-def crawl_dabang(station_id):
+def crawl_dabang(station_id, page_number):
 
-    request = 'http://www.dabangapp.com/api/2/room/list/subway?filters={"room-type":[0],"price-range":[10,999999]}&page=1&id=' + str(station_id)
+    request = 'http://www.dabangapp.com/api/2/room/list/subway?filters={"room-type":[0],"price-range":[10,999999]}&id=' + str(station_id) + '&page=' + str(page_number) #검색조건 room-type 0 = 월세만, price-range 는 월세 범위
 
     response = urllib.request.urlopen(request)
 
@@ -43,7 +43,7 @@ def averaging(json_object) : #각 역의 검색 결과에서 방들의 보증금
 
     total_price = 0
 
-    counter = 0
+    total_rooms = json_object['total']
 
     for i in json_object['rooms'] :
         room_deposit = i['price_info'][0][0]
@@ -52,20 +52,29 @@ def averaging(json_object) : #각 역의 검색 결과에서 방들의 보증금
         room_price = i['price_info'][0][1]
         total_price += room_price
 
-        counter += 1
+    has_more = json_object['has-more']
+    while has_more == True :
+        json_object = crawl_dabang(json_object['subway']['id'], json_object['next-page'])
+        for i in json_object['rooms'] :
+            room_deposit = i['price_info'][0][0]
+            total_deposit += room_deposit #방별 보증금을 합함
 
+            room_price = i['price_info'][0][1]
+            total_price += room_price
 
-    average_deposit = total_deposit / counter
+        has_more = json_object['has-more']
+
+    average_deposit = total_deposit / total_rooms
     average_deposit = int(round(average_deposit, -2)) # 보증금은 10의자리로 반올림
 
-    average_price = total_price / counter
+    average_price = total_price / total_rooms
     average_price = int(round(average_price, -1)) #월세는 1의자리로 반올림
 
     return average_deposit, average_price
 
 def write(iter, file_object) : #결과를 txt파일에 저장하는 함수
 
-    crawled = crawl_dabang(iter)
+    crawled = crawl_dabang(iter, 1) #iter 에 해당하는 역 인덱스의 페이지 1번을 읽어 시작
     filtered = filter_by_line(crawled)
     if filtered != False :
         average = averaging(crawled)
@@ -77,10 +86,10 @@ if __name__ == "__main__" :
 
     start = time.time()
 
-    f = open("MetroRentalFee.txt", 'w') #역, 호선, 보증금 월세를 저장하기 위한 파일 오픈
+    f = open("MetroRentalFee.txt", 'w') #역, 호선,ㅁ 보증금 월세를 저장하기 위한 파일 오픈
 
     with ThreadPoolExecutor(max_workers=10) as executor:
-        for i in range(1, 789):
+        for i in range(1, 789): #다방 역 인덱스 1 - 788 까지 돌림
             executor.submit(write, i, f)
 
     f.close()
