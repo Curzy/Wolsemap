@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+__author__ = 'Curzy'
 
 import urllib.request
 import json
@@ -9,7 +9,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 def crawl_dabang(station_id, page_number):
 
-    request = 'http://www.dabangapp.com/api/2/room/list/subway?filters={"room-type":[0],"price-range":[10,999999]}&id=' + str(station_id) + '&page=' + str(page_number) #검색조건 room-type 0 = 월세만, price-range 는 월세 범위
+    request = 'http://www.dabangapp.com/api/2/room/list/subway?filters={"room-type":[0],"room-size":[16,33],"price-range":[10,999999]}&id=' + str(station_id) + '&page=' + str(page_number) #검색조건 room-type 0 = 월세만, price-range 는 월세 범위, room-size 5평, 10평 사이
 
     response = urllib.request.urlopen(request)
 
@@ -43,7 +43,8 @@ def averaging(json_object) : #각 역의 검색 결과에서 방들의 보증금
 
     total_price = 0
 
-    total_rooms = json_object['total']
+    total_rooms = 0
+    #total_rooms = json_object['total']
 
     for i in json_object['rooms'] :
         room_deposit = i['price_info'][0][0]
@@ -51,6 +52,9 @@ def averaging(json_object) : #각 역의 검색 결과에서 방들의 보증금
 
         room_price = i['price_info'][0][1]
         total_price += room_price
+
+        total_rooms += 1
+
 
     has_more = json_object['has-more']
     while has_more == True :
@@ -61,6 +65,9 @@ def averaging(json_object) : #각 역의 검색 결과에서 방들의 보증금
 
             room_price = i['price_info'][0][1]
             total_price += room_price
+
+            total_rooms += 1
+
 
         has_more = json_object['has-more']
 
@@ -82,17 +89,16 @@ def write(iter, file_object) : #결과를 txt파일에 저장하는 함수
         print(data)
         file_object.write(data + "\n")
 
+
 if __name__ == "__main__" :
 
     start = time.time()
 
-    f = open("MetroRentalFee.txt", 'w') #역, 호선,ㅁ 보증금 월세를 저장하기 위한 파일 오픈
+    with open("MetroRentalFee.txt", 'w') as f:
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            for i in range(1, 789): #다방 역 인덱스 1 - 788 까지 돌림
+                executor.submit(write, i, f)
 
-    with ThreadPoolExecutor(max_workers=10) as executor:
-        for i in range(1, 789): #다방 역 인덱스 1 - 788 까지 돌림
-            executor.submit(write, i, f)
-
-    f.close()
 
     duration = time.time() - start
     print(duration)
