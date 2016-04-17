@@ -1,3 +1,5 @@
+import re
+
 __author__ = 'Curzy'
 
 
@@ -14,10 +16,11 @@ def insert_price (read_file_object, svg_file_object, write_file_object) :
 
         station_price = info[-1]
 
+        #regex = re.compile('>' + station_name_without_yeok + '<')
         name_with_price = station_name_without_yeok + ' ' + station_price
 
         print (name_with_price)
-        svg = svg.replace(station_name_without_yeok, name_with_price)
+        svg = svg.replace('>' + station_name_without_yeok + '<', '>' + name_with_price + '<')
 
     write_file_object.write(svg)
 
