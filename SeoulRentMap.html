@@ -2,18 +2,29 @@
 <html>
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">        
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
     </script>
+    <script src="http://ariutta.github.io/svg-pan-zoom/dist/svg-pan-zoom.min.js"></script>
 </head>
 
 <body>
-    <h1>Embedding SVG in an XHTML Document</h1>
-    <p>Embedding the file <em>standAlone.svg</em> using the <strong>object</strong> element:
-    </p>
-    <object data="price_inserted_subway_linemap.svg" width="1920px" height="1080px" type="image/svg+xml" id="subwaysvg">
-        <img src="price_inserted_subway_linemap.svg" alt="PNG image of standAlone.svg" />
-    </object>
+    <div class="container">
+        <h1>서울 월세 노선도</h1>
+        Command + F로 원하는 역을 찾아보세요
+        <object data="price_inserted_subway_linemap.svg" width="100%" height="100%" type="image/svg+xml" id="subwaysvg">
+        </object>
+    </div>
 </body>
+<script>
+    window.onload = function () {
+        svgPanZoom('#subwaysvg', {
+            zoomEnabled: true,
+            controlIconsEnabled: true
+        });
+    };
+</script>
 
 
 </html>
