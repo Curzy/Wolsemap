@@ -103,7 +103,7 @@ def averaging(station_info) :
 
 
 def insert_price (station_price_list, original_subway_map, subway_price_map) :
-    """역별로 가공된 데이터는 """
+    """역별로 가공된 데이터를 역 이름 + 보증금/월세의 형태로 지도에 박아넣음"""
     original_map = original_subway_map.read()
 
     while True:
