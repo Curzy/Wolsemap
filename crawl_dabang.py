@@ -105,13 +105,8 @@ def insert_price ( original_subway_map, subway_price_map) :
     """역별로 가공된 데이터를 역 이름 + 보증금/월세의 형태로 지도에 박아넣음"""
     original_map = original_subway_map.read()
 
-    for station_id in range(1,789):
-        try :
-            station_data  = station_price_list[station_id]
-        except IndexError as e :
-            print(e)
+    for station_data in station_price_list:
         #각 역별로 read한 자료는 _data 그중 내가 원하는 보증금과 가격의 정보만을 뽑을 수 있도록 하는 변수는 _info
-        if not station_data: break
         station_info = station_data.split()
         station_name = station_info[1]
         station_name_without_yeok = station_name[0:-1]
