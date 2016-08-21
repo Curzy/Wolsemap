@@ -6,10 +6,11 @@ import codecs
 import time
 from concurrent.futures import ThreadPoolExecutor
 
-filtering_line = ('1호선', '2호선', '3호선', '4호선', '5호선', '6호선', '7호선', '8호선', '9호선', '분당선', '신분당선', '경의선', '중앙선')
+SUBWAY_LINES = ('1호선', '2호선', '3호선', '4호선', '5호선', '6호선', '7호선', '8호선', '9호선', '분당선', '신분당선', '경의선', '중앙선')
 station_price_list = []
 
-def main():
+
+def init():
     start = time.time()
 
     with ThreadPoolExecutor(max_workers=10) as executor:
@@ -55,7 +56,7 @@ def crawl_dabang(station_id, page_number):
     total_room = station_data['total']
     subway_line = station_data['subway']['line']
     #수도권 호선인지 검사 #방이 없는 역일 경우 넘김
-    if subway_line[0] not in filtering_line :
+    if subway_line[0] not in SUBWAY_LINES :
         return False
     elif total_room == 0 :
         return False
@@ -126,5 +127,5 @@ def insert_price ( original_subway_map, subway_price_map) :
 
 
 if __name__ == "__main__" :
-    main()
+    init()
 
