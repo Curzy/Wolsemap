@@ -1463,7 +1463,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3636.2891 5298.6475)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">병점 700/30</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3482.0039 5159.6475)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">세류 500/30</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3482.0039 5159.6475)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">세류 400/30</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3237.6104 4787.8047)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">화서 400/20</text>
 			
@@ -1553,7 +1553,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 5015.1309 4919.0107)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">둔전</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4160.2363 4741.1465)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">신갈 600/30</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4160.2363 4741.1465)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">신갈 500/30</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3733.7041 4563.9287)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">광교</text>
 			
@@ -1563,7 +1563,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4059.8887 4363.4336)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">수지구청 600/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4088.2363 4273.4336)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">동천 1500/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4088.2363 4273.4336)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">동천 1600/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3715.9092 4755.9717)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">광교중앙</text>
 			
@@ -1585,7 +1585,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3122.9824 2001.7993)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">시청</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2713.9697 1497.8091)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">연신내 1200/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2713.9697 1497.8091)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">연신내 1100/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3009.9761 2110.6382)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">충정로 1500/50</text>
 			
@@ -1631,7 +1631,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 1879.8701 2795.6396)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">역곡 500/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 1751.8701 2795.6392)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">소사 400/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 1751.8701 2795.6392)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">소사 500/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 1647.8701 2795.6392)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">부천 400/40</text>
 			
@@ -1804,13 +1804,13 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 1675.8584 1870.6289)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">개화</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 1991.8584 2111.6279)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">마곡 1900/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 1991.8584 2111.6279)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">마곡 2000/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2345.5669 2097.2861)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">등촌 1100/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2327.9458 2200.3369)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">염창 800/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2421.3506 2232.1387)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">신목동 2000/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2421.3506 2232.1387)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">신목동 1000/60</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2505.585 2292.376)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">선유도 1500/40</text>
 			
@@ -1826,7 +1826,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3662.3936 2613.6313)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">언주 300/70</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2093.8223 2059.79)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">발산 1500/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2093.8223 2059.79)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">발산 1600/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2141.8213 2107.7886)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">우장산 600/40</text>
 			
@@ -1874,7 +1874,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3201.9863 2639.6348)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">동작</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3141.8281 2747.793)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">남성 1700/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3141.8281 2747.793)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">남성 1800/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3306.0283 2739.8359)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">내방 1600/50</text>
 			
@@ -1901,7 +1901,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2656.8877 2604.5518)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">신풍 1600/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2628.1108 2519.02)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">영등포 1000/50</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2628.1108 2519.02)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">영등포 1100/50</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2776.8516 2543.1299)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">대방 1000/40</text>
 			
@@ -1997,7 +1997,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2873.979 1445.3701)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">독바위 600/30</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2685.4819 1558.2427)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">구산 900/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2685.4819 1558.2427)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">구산 800/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2685.4873 1678.2441)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">응암 1100/40</text>
 			
@@ -2009,7 +2009,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2556.0361 1794.6304)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">수색 1600/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2679.1235 1925.7153)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">가좌 700/50</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2679.1235 1925.7153)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">가좌 800/50</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2885.1094 2131.7007)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">서강대 1200/50</text>
 			
@@ -2029,7 +2029,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 1631.6299 802.1807)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">일산 300/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2517.4648 2044.2964)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">마포구청 2200/50</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2517.4648 2044.2964)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">마포구청 2000/50</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2491.4434 2010.3174)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">월드컵경기장 1200/50</text>
 			
@@ -2085,7 +2085,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3681.2041 2794.9663)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">매봉 1800/50</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3663.1221 2460.7944)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">학동 400/70</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3663.1221 2460.7944)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">학동 300/70</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3869.0605 2530.9995)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">삼성중앙 500/70</text>
 			
@@ -2101,7 +2101,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4036.5039 2604.4536)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">종합운동장 1400/60</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4139.71 2611.6909)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">신천 1100/60</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4139.71 2611.6909)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">신천 1200/60</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3839.3477 2844.6445)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">개포동</text>
 			
@@ -2135,7 +2135,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4045.8389 2751.791)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">대청 600/50</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3927.291 2604.4536)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">삼성 700/70</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3927.291 2604.4536)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">삼성 600/70</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2756.6084 2216.8755)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">상수 1600/50</text>
 			
@@ -2157,7 +2157,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3296.6191 1896.4399)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">종로3가 600/50</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2874.6177 1556.438)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">불광 1300/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 2874.6177 1556.438)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">불광 1400/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3350.1191 1885.9404)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">종로5가 900/50</text>
 			<text transform="matrix(1 0 0 1 3308.1523 2015.5)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20">을지로4가 1000/60</text>
@@ -2171,21 +2171,21 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3452.0039 1835.0571)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">혜화 1200/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3383.4658 1762.041)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">한성대입구 1300/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3383.4658 1762.041)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">한성대입구 1200/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3482.1865 1756.7725)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">성신여대입구 1400/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3532.8008 1610.8501)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">길음 700/30</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3532.8008 1610.8501)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">길음 600/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3548.3018 1568.5791)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">미아사거리 1400/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3666.3994 1966.3936)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20">용두 1100/50</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3607.1152 1985.7729)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20">상왕십리 1600/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3607.1152 1985.7729)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20">상왕십리 1700/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3523.0029 1852.2222)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">창신 1400/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3508.9873 1783.5684)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">보문 1300/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3508.9873 1783.5684)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">보문 1400/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3796.2969 1586.4824)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">돌곶이 500/40</text>
 			
@@ -2203,7 +2203,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3776.916 1944.4229)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">신답 800/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3800.415 1957.9229)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">답십리 900/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3800.415 1957.9229)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">답십리 1000/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3912.415 2009.4219)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">장한평 700/50</text>
 			
@@ -2211,9 +2211,9 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4237.417 2156.0835)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">광나루 500/30</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4144.0811 2276.4238)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">강변 1200/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4144.0811 2276.4238)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">강변 800/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4068.0381 2208.4312)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">구의 1500/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4068.0381 2208.4312)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">구의 1400/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3902.2129 2180.1206)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">어린이대공원 1000/50</text>
 			
@@ -2221,7 +2221,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3982.7451 2218.4243)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">건대입구 900/50</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3818.0557 2279.7734)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">성수 1900/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3818.0557 2279.7734)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">성수 1500/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3660.9678 2298.9727)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">서울숲 1800/40</text>
 			
@@ -2229,7 +2229,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3714.6436 2213.6943)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">뚝섬 1800/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3607.0625 1742.7617)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">안암 900/50</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3607.0625 1742.7617)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">안암 900/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3788.542 1711.6836)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">외대앞 1100/40</text>
 			
@@ -2237,9 +2237,9 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3941.4814 1750.7402)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">중랑 1100/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4000.667 1628.3848)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">중화 1100/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4000.667 1628.3848)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">중화 1000/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3956.0068 1547.8848)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">먹골 1000/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3956.0068 1547.8848)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">먹골 1100/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3994.7314 1548.6558)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">화랑대 900/40</text>
 			
@@ -2363,9 +2363,9 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3833.3672 1801.2339)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">회기 1100/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4386.7334 2778.0557)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">문정 2500/60</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4386.7334 2778.0557)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">문정 2800/60</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4388.0654 2853.3936)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">장지 3100/60</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4388.0654 2853.3936)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">장지 3200/60</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4549.4023 3037.3887)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">산성 300/20</text>
 			
@@ -2383,9 +2383,9 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4388.0557 3504.8369)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">야탑 500/70</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4389.126 3684.5947)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">이매 2000/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4389.126 3684.5947)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">이매</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4198.9131 3691.6162)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">판교 1500/80</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4198.9131 3691.6162)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">판교 1800/70</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 3831.4775 3111.0625)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">청계산입구</text>
 			
@@ -2395,7 +2395,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4349.9629 3802.0293)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">서현 2000/60</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4235.6318 3963.0488)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">정자 1200/70</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4235.6318 3963.0488)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">정자 1300/70</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4243.6328 4115.0498)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">미금 500/30</text>
 			
@@ -2403,7 +2403,7 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4243.6299 4469.0664)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">보정 700/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4243.6299 4373.5664)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">죽전 900/40</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4243.6299 4373.5664)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">죽전 1000/40</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4495.9111 2372.8677)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">둔촌동 700/50</text>
 			
@@ -2413,11 +2413,11 @@
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4484.1523 2583.334)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">오금 1900/40</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4424.9258 2248.0259)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">강동 800/50</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4424.9258 2248.0259)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">강동 700/50</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4375.7236 2257.4595)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">천호 1000/50</text>
 			
-				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4051.5928 2040.6885)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">군자 1300/50</text>
+				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4051.5928 2040.6885)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">군자 1200/50</text>
 			
 				<text transform="matrix(0.7071 -0.7071 0.7071 0.7071 4522.9424 2615.7988)" font-family="'NotoSansCJKkr-Regular-KSCpc-EUC-H'" font-size="20.0001">개롱 800/50</text>
 			

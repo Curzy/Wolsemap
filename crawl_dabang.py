@@ -7,21 +7,23 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 
 SUBWAY_LINES = ('1호선', '2호선', '3호선', '4호선', '5호선', '6호선', '7호선', '8호선', '9호선', '분당선', '신분당선', '경의선', '중앙선')
-station_price_list = {}
 
 
 def init():
+
+    station_price_list = {}
+
     start = time.time()
 
     with ThreadPoolExecutor(max_workers=10) as executor:
         #다방 역 인덱스 1 - 788 까지 돌림
         for station_id in range(1, 789):
-            executor.submit(record_station_info, station_id)
+            executor.submit(record_station_info, station_id, station_price_list)
 
     print(station_price_list)
     with open("Seoul_subway_linemap_ko.svg", 'r') as original_map_f:
         with open("price_inserted_subway_linemap.svg", 'w') as subway_price_map_f:
-            insert_price(original_map_f, subway_price_map_f)
+            insert_price(original_map_f, subway_price_map_f, station_price_list)
 
 
 
@@ -29,7 +31,7 @@ def init():
     print(duration)
 
 
-def record_station_info(station_id) :
+def record_station_info(station_id, station_price_list) :
     """역 이름, 노선, 평균 보증금, 평균 월세를 저장한다."""
 
     #station_id 에 해당하는 역 인덱스의 페이지 1번을 읽어 시작
@@ -103,7 +105,7 @@ def averaging(station_info) :
     return station_name, subway_line, average_deposit, average_price
 
 
-def insert_price ( original_subway_map, subway_price_map) :
+def insert_price (original_subway_map, subway_price_map, station_price_list) :
     """역별로 가공된 데이터를 역 이름 + 보증금/월세의 형태로 지도에 박아넣음"""
     original_map = original_subway_map.read()
 
@@ -129,4 +131,3 @@ def insert_price ( original_subway_map, subway_price_map) :
 
 if __name__ == "__main__" :
     init()
-

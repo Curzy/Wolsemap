@@ -18,15 +18,16 @@
         <object data="price_inserted_subway_linemap.svg" width="100%" height="100%" type="image/svg+xml" id="subwaysvg">
         </object>
     </div>
+
+    <script>
+        window.onload = function () {
+            svgPanZoom('#subwaysvg', {
+                zoomEnabled: true,
+                controlIconsEnabled: true
+            });
+        };
+    </script>
 </body>
-<script>
-    window.onload = function () {
-        svgPanZoom('#subwaysvg', {
-            zoomEnabled: true,
-            controlIconsEnabled: true
-        });
-    };
-</script>
 
 
 </html>
