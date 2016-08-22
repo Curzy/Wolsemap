@@ -7,7 +7,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 
 SUBWAY_LINES = ('1호선', '2호선', '3호선', '4호선', '5호선', '6호선', '7호선', '8호선', '9호선', '분당선', '신분당선', '경의선', '중앙선')
-station_price_list = []
+station_price_list = {}
 
 
 def init():
@@ -36,9 +36,10 @@ def record_station_info(station_id) :
     crawled = crawl_dabang(station_id, 1)
     if crawled :
         average = averaging(crawled)
-        data = str(station_id) + " " + str(average[0]) + " " + str(average[1]) + " " + str(average[2]) + "/" + str(average[3])
+        #역 이름, 호선, 보증금, 월세
+        data = [average[0],average[1],average[2],average[3]]
         print(data)
-        station_price_list.insert(station_id, data)
+        station_price_list[station_id] = data
 
 
 def crawl_dabang(station_id, page_number):
@@ -106,13 +107,13 @@ def insert_price ( original_subway_map, subway_price_map) :
     """역별로 가공된 데이터를 역 이름 + 보증금/월세의 형태로 지도에 박아넣음"""
     original_map = original_subway_map.read()
 
-    for station_data in station_price_list:
+    for station_id in list(station_price_list.keys()):
         #각 역별로 read한 자료는 _data 그중 내가 원하는 보증금과 가격의 정보만을 뽑을 수 있도록 하는 변수는 _info
-        station_info = station_data.split()
-        station_name = station_info[1]
+        station_info = station_price_list[station_id]
+        station_name = station_info[0]
         station_name_without_yeok = station_name[0:-1]
 
-        station_price = station_info[-1]
+        station_price = str(station_info[2]) + "/" + str(station_info[3])
 
         name_with_price = station_name_without_yeok + ' ' + station_price
 
