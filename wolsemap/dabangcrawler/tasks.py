@@ -42,7 +42,6 @@ def insert_stations(station_id_start, station_id_end):
 
         station_object = Station.objects.create(station_id=station_id,
                                                 station_name=station_name)
-        station_object.save()
         for line in station_lines:
             try:
                 line = Line.objects.get(lines=line)
@@ -65,4 +64,3 @@ def insert_price(station_id):
         price = average[3]
         station = Station.objects.get(station_id=station_id)
         price_object = Price.objects.create(station=station, deposit=deposit, price=price)
-        price_object.save()
