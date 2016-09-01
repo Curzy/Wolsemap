@@ -38,24 +38,24 @@ CELERY_TIMEZONE = 'Asia/Seoul'
 CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
-CELERYBEAT_SCHEDULER = {
+CELERYBEAT_SCHEDULE = {
     'print-something-every-5-seconds': {
         'task': 'dabangcrawler.tasks.printsomething',
         'schedule': timedelta(seconds=5),
-        'args': (100)
+        'args': [i for i in range(1,789)]
     },
 }
 # Application definition
 
 INSTALLED_APPS = (
-    'djcelery',
-    'dabangcrawler',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djcelery',
+    'dabangcrawler',
 )
 
 MIDDLEWARE_CLASSES = (
