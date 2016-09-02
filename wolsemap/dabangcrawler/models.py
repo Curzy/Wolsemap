@@ -26,3 +26,7 @@ class Price(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        info = str(self.station.station_id) + ' ' + str(self.station.station_name) + ' ' + str(self.deposit) + '/' + str(self.price) + ' ' + str(self.created_at)
+        return info
+

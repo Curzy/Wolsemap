@@ -13,8 +13,12 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from datetime import timedelta
+from celery.schedules import crontab
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -32,17 +36,17 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = 'amqp://'
-CELERY_ANNOTATIONS = {'dabangcrawler.tasks.printsomething': {'rate_limit': '10/s'}}
 CELERY_TIMEZONE = 'Asia/Seoul'
 
 CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
+
 CELERYBEAT_SCHEDULE = {
-    'print-something-every-5-seconds': {
-        'task': 'dabangcrawler.tasks.printsomething',
-        'schedule': timedelta(seconds=5),
-        'args': [i for i in range(1,789)]
+    'insert-prices-every-10minute': {
+        'task': 'dabangcrawler.tasks.insert_prices',
+        'schedule': crontab(minute='*'),
+        'args': (1, 789),
     },
 }
 # Application definition
@@ -71,10 +75,14 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'wolsemap.urls'
 
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_PATH, 'templates/'),
+)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(PROJECT_PATH, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,7 +114,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -119,3 +127,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+print(STATIC_ROOT)

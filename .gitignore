@@ -90,3 +90,6 @@ celerybeat-schedule
 
 # virtualenv
 .venv
+
+# sqlite
+.sqlite3
