@@ -43,9 +43,9 @@ CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 
 CELERYBEAT_SCHEDULE = {
-    'insert-prices-every-10minute': {
+    'insert-prices-every-night': {
         'task': 'dabangcrawler.tasks.insert_prices',
-        'schedule': crontab(minute='*'),
+        'schedule': crontab(hour=0),
         'args': (1, 789),
     },
 }
