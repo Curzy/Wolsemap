@@ -4,6 +4,7 @@ from .models import Line, Station, Price
 from concurrent.futures import ThreadPoolExecutor
 import urllib.request, codecs, json
 
+# -*- coding: utf-8 -*- 
 
 
 
