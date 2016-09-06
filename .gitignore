@@ -92,4 +92,4 @@ celerybeat-schedule
 .venv
 
 # sqlite
-.sqlite3
+*.sqlite3
