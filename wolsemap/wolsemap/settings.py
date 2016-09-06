@@ -15,9 +15,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from datetime import timedelta
 from celery.schedules import crontab
-
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -48,7 +46,7 @@ CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 CELERYBEAT_SCHEDULE = {
     'insert-prices-every-night': {
         'task': 'dabangcrawler.tasks.insert_prices',
-        'schedule': crontab(hour=0),
+        'schedule': crontab(minute=0, hour=0),
         'args': (1, 789),
     },
 }
