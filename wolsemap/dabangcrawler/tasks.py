@@ -1,13 +1,15 @@
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
+
+import os
+
 from celery import shared_task
+
+from wolsemap.settings import PROJECT_PATH
 from .models import Line, Station, Price
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import urllib.request, codecs, json
-
-# -*- coding: utf-8 -*- 
-
-
-
+import zlib
 
 def crawl_dabang(station_id, page_number):
 
@@ -34,7 +36,7 @@ def crawl_dabang(station_id, page_number):
     """dabang에서 역 하나, 페이지를 지정하여 JSON데이터를 긁어온다. 역에 매물이 있고, 수도권 역일 경우엔 리턴한다"""
 
     #검색조건 room-type 0 = 월세만, deposit-range 보증금, price-range 범위, room-size 5평 - 10평 사이
-    request = ('http://www.dabangapp.com/api/2/room/list/subway?'
+    url = ('http://www.dabangapp.com/api/2/room/list/subway?'
                'filters={"room-type":' + str(ROOMTYPE) +
                ',"room-size":['+ str(ROOMSIZE_MIN) +
                ','+ str(ROOMSIZE_MAX) + '],"deposit-range":['+ str(DEPOSIT_MIN) +
@@ -42,12 +44,10 @@ def crawl_dabang(station_id, page_number):
                str(PRICE_MAX)+ ']}&id=' + str(station_id) + '&page=' +
                str(page_number)
     )
+    request = urllib.request.Request(url, headers={'Accept-Encoding': 'gzip'})
     response = urllib.request.urlopen(request)
-
-    reader = codecs.getreader("utf-8")
-
-    station_data = json.load(reader(response))
-
+    dump = zlib.decompress(response.read(), 47).decode('utf-8')
+    station_data = json.loads(dump)
     response.close()
 
     total_room = station_data['total']
@@ -112,15 +112,48 @@ def insert_price(station_id):
         price = average[3]
         station = Station.objects.get(station_id=station_id)
         price_object = Price.objects.create(station=station, deposit=deposit, price=price)
-        return price_object.station.station_name, price_object,deposit, price_object.price
+        return price_object.station.station_name, price_object.deposit, price_object.price
 
 
 
 @shared_task
 def insert_prices(station_id_start, station_id_end):
+
+    recent_price_dict = {}
+
     with ThreadPoolExecutor(max_workers=15) as executor:
         future_to_id = {executor.submit(insert_price, station_id): station_id for station_id in range(station_id_start, station_id_end)}
+        for future in as_completed(future_to_id):
+            station_id = future_to_id[future]
+            try:
+                station_info = future.result()
+            except Exception as e:
+                print('station id : %d generated an exception: %s' % (station_id, e))
+            if station_info :
+                recent_price_dict[station_id] = station_info
+
+    with open(os.path.join(PROJECT_PATH, 'dabangcrawler/maps/Seoul_subway_linemap_ko.svg'), 'r') as original_map_f:
+        with open(os.path.join(PROJECT_PATH, 'dabangcrawler/static/svg/price_inserted_subway_linemap.svg'), 'w') as subway_price_map_f:
+            price_to_map(original_map_f, subway_price_map_f, recent_price_dict)
 
 @shared_task
-def add_test(x, y):
-    return x + y
+def price_to_map(original_subway_map, subway_price_map, recent_price_dict):
+    original_map = original_subway_map.read()
+
+    for station_id in list(recent_price_dict.keys()):
+        station_info = recent_price_dict[station_id]
+
+        station_name = station_info[0]
+        station_name_without_yeok = station_name[0:-1]
+
+        station_price = str(station_info[1]) + "/" + str(station_info[2])
+
+        name_with_price = station_name_without_yeok + ' ' + station_price
+
+        print(name_with_price)
+        original_map = original_map.replace('>' + station_name_without_yeok + '<', '>' + name_with_price + '<')
+
+    subway_price_map.write(original_map)
+
+    return True
+
