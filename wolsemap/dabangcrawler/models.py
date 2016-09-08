@@ -30,3 +30,6 @@ class Price(models.Model):
         info = str(self.station.station_id) + ' ' + str(self.station.station_name) + ' ' + str(self.deposit) + '/' + str(self.price) + ' ' + str(self.created_at)
         return info
 
+    class Meta:
+        get_latest_by = 'created_at'
+
