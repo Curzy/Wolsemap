@@ -5,12 +5,13 @@ import os
 
 from celery import shared_task
 
-from wolsemap.settings import PROJECT_PATH
-from .models import Line, Station, Price
+from django.conf import settings
+from .models import Station, Price
 from concurrent.futures import ThreadPoolExecutor, as_completed
-import urllib.request, codecs, json
+import urllib.request, json
 import zlib
 
+PROJECT_PATH = settings.PROJECT_PATH
 def crawl_dabang(station_id, page_number):
 
     #Config
@@ -112,6 +113,7 @@ def insert_price(station_id):
         price = average[3]
         station = Station.objects.get(station_id=station_id)
         price_object = Price.objects.create(station=station, deposit=deposit, price=price)
+        print(str(station_id) + ' ' + str(price_object.station.station_name) + ' ' + str(price_object.deposit) + '/' + str(price_object.price))
         return price_object.station.station_name, price_object.deposit, price_object.price
 
 
@@ -150,10 +152,13 @@ def price_to_map(original_subway_map, subway_price_map, recent_price_dict):
 
         name_with_price = station_name_without_yeok + ' ' + station_price
 
-        print(name_with_price)
         original_map = original_map.replace('>' + station_name_without_yeok + '<', '>' + name_with_price + '<')
 
     subway_price_map.write(original_map)
 
     return True
 
+# @shared_task
+# def test_time_stamp():
+#     print('now is ' + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+#     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')

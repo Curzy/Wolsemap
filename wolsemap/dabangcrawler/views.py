@@ -1,5 +1,15 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
+from django.views import generic
+
+
 # Create your views here.
 
-def wolsemap(request):
-    return render(request, 'wolsemap.html')
+
+class IndexView(generic.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, template_name='index.html')
+
+
+class WolseMapView(generic.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, template_name='wolsemap.html')

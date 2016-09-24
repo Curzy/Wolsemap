@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+front/dist
 env/
 build/
 develop-eggs/
@@ -23,6 +24,10 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+front/dist/
+static/*
+*compiled*
+maps/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -74,10 +79,10 @@ target/
 
 # celery beat schedule file
 celerybeat-schedule
+celerybeat*
 
 # dotenv
 .env
-
 
 # Spyder project settings
 .spyderproject
@@ -93,3 +98,6 @@ celerybeat-schedule
 
 # sqlite
 *.sqlite3
+
+node_modules
+
