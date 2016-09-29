@@ -25,7 +25,7 @@ var/
 .installed.cfg
 *.egg
 front/dist/
-static/*
+static/**
 *compiled*
 maps/
 
