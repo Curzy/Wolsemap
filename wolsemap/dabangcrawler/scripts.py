@@ -12,7 +12,6 @@ def preset_subway_lines():
 
     for i in SUBWAY_LINES:
         l = Line.objects.create(lines=i)
-        l.save()
 
 def insert_stations(station_id_start, station_id_end):
     Station.objects.all().delete()
