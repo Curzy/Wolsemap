@@ -12,6 +12,8 @@ import urllib.request, json
 import zlib
 
 PROJECT_PATH = settings.PROJECT_PATH
+
+
 def crawl_dabang(station_id, page_number):
 
     #Config
@@ -158,7 +160,3 @@ def price_to_map(original_subway_map, subway_price_map, recent_price_dict):
 
     return True
 
-# @shared_task
-# def test_time_stamp():
-#     print('now is ' + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-#     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')

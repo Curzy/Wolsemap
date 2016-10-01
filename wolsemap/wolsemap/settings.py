@@ -116,8 +116,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'djcelery',
     'dabangcrawler',
+    'djcelery',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -141,11 +141,7 @@ CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 CELERYBEAT_SCHEDULE = {
-    # 'test-timestamp-every-10-seconds': {
-    #     'task': 'dabangcrawler.tasks.test_time_stamp',
-    #     'schedule': datetime.timedelta(seconds=10),
-    # },
-    'insert-prices-every-night': {
+    'dabangcrawler.tasks.insert_prices': {
         'task': 'dabangcrawler.tasks.insert_prices',
         'schedule': crontab(minute=0, hour=0),
         'args': (1, 789),
