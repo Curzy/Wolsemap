@@ -1,19 +1,13 @@
 html,
 body {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background-color: #EEEEEE;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #EEEEEE;
 }
 
 .container {
-    width: 90%;
-    height: 70%;
-    margin: 40px auto;
-}
-
-#metro {
-    width: 90%;
-    height: 80%;
-    margin: 40px auto;
+  width: 90%;
+  height: 80%;
+  margin: 40px auto;
 }
