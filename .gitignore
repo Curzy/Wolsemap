@@ -28,6 +28,8 @@ front/dist/
 /wolsemap/static/
 *compiled*
 maps/
+*.pid
+;
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
