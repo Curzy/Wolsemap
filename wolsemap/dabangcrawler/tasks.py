@@ -157,6 +157,7 @@ def price_to_map(original_subway_map, subway_price_map, recent_price_dict):
         original_map = original_map.replace('>' + station_name_without_yeok + '<', '>' + name_with_price + '<')
 
     subway_price_map.write(original_map)
+    os.system('echo yes | python manage.py collectstatic')
 
     return True
 
