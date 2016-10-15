@@ -1,11 +1,13 @@
 from django.db import models
 # Create your models here.
 
+
 class Line(models.Model):
     lines = models.CharField(max_length=20, unique=True)
 
     def __str__(self):
         return self.lines
+
 
 class Station(models.Model):
     station_id = models.IntegerField(unique=True)
