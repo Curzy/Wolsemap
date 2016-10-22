@@ -22,7 +22,11 @@ class Station(models.Model):
 
 
 class Price(models.Model):
-    station = models.ForeignKey(Station, related_name='price_hitory')
+
+    class Meta:
+        get_latest_by = 'created_at'
+
+    station = models.ForeignKey(Station, related_name='price_history')
     deposit = models.IntegerField()
     price = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -31,7 +35,3 @@ class Price(models.Model):
     def __str__(self):
         info = str(self.station.station_id) + ' ' + str(self.station.station_name) + ' ' + str(self.deposit) + '/' + str(self.price) + ' ' + str(self.created_at)
         return info
-
-    class Meta:
-        get_latest_by = 'created_at'
-
