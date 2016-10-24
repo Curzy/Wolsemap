@@ -123,7 +123,6 @@ def insert_price(station_id):
 
 
 @shared_task
-@transaction.atomic
 def insert_prices(station_id_start, station_id_end):
 
     recent_price_dict = {}
