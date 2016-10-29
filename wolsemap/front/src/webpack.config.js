@@ -4,6 +4,7 @@ module.exports = {
   context: __dirname,
   entry: {
     index: './index.js',
+    wolsemap: './wolsemap.js'
   },
   output: {
     path: __dirname + '/../dist',
@@ -21,7 +22,8 @@ module.exports = {
       },
       {test: /\.jsx$/, loader: 'jsx'},
       {test: /\.css$/, loader: 'style!css'},
-      {test: /\.less$/, loader: 'style!css!less'}
+      {test: /\.less$/, loader: 'style!css!less'},
+      {test: /\.svg$/, loader: 'svg-loader'}
     ]
   },
   resolve: {
