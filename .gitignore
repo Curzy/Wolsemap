@@ -25,6 +25,7 @@ var/
 .installed.cfg
 *.egg
 front/dist/
+MetroMap/
 static
 *compiled*
 maps/
