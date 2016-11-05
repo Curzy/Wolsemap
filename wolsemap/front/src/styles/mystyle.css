@@ -1,13 +1,19 @@
 html,
 body {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background-color: #EEEEEE;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #F0F0F0;
+  color: #555555;
 }
 
 .container {
-    width: 90%;
-    height: 70%;
-    margin: 40px auto;
+  width: 70%;
+  height: 50%;
+  margin: 40px auto;
+}
+
+.record {
+  display: inline-block;
+  margin-top: 2em;
 }

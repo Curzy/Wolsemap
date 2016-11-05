@@ -1,5 +1,4 @@
 from django.db import models
-# Create your models here.
 
 
 class Line(models.Model):
@@ -10,14 +9,14 @@ class Line(models.Model):
 
 
 class Station(models.Model):
-    station_id = models.IntegerField(unique=True)
-    station_name = models.CharField(max_length=30, unique=True)
-    station_lines = models.ManyToManyField(Line)
+    dabang_id = models.IntegerField(unique=True)
+    name = models.CharField(max_length=30, unique=True)
+    line = models.ManyToManyField(Line)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        info = str(self.station_id) + ' ' + str(self.station_name) + ' ' + str(self.station_lines.all())
+        info = str(self.dabang_id) + ' ' + str(self.name) + ' ' + str(self.line.all())
         return info
 
 
@@ -33,5 +32,5 @@ class Price(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        info = str(self.station.station_id) + ' ' + str(self.station.station_name) + ' ' + str(self.deposit) + '/' + str(self.price) + ' ' + str(self.created_at)
+        info = str(self.station.dabang_id) + ' ' + str(self.station.name) + ' ' + str(self.deposit) + '/' + str(self.price) + ' ' + str(self.created_at)
         return info

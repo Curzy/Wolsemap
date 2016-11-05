@@ -4,13 +4,16 @@ module.exports = {
   context: __dirname,
   entry: {
     index: './index.js',
-    wolsemap: './wolsemap.js'
+    wolsemap: './wolsemap_app.js'
   },
   output: {
     path: __dirname + '/../dist',
     filename: '[name].js'
   },
   module: {
+    preLoaders: [
+      {test: /\.json$/, loader: 'json-loader'}
+    ],
     loaders: [
       {
         test: /\.js$/,
@@ -40,5 +43,10 @@ module.exports = {
   externals: {
     'jquery': '$',
     'bson': 'bson'
+  },
+  node: {
+    net: 'empty',
+    tls: 'empty',
+    fs: 'empty'
   }
 };

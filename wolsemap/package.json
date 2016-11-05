@@ -9,8 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "json-loader": "^0.5.4",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-d3-basic": "^1.6.11",
+    "react-dom": "^15.3.2",
+    "react-select": "^1.0.0-rc.2",
+    "request": "^2.78.0"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",

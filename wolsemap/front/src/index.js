@@ -15,4 +15,3 @@ ReactDOM.render(
     <IndexPage/>,
     document.getElementById('content')
 );
-
