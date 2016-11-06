@@ -40,10 +40,6 @@ module.exports = {
       minChunks: 2
     })
   ],
-  externals: {
-    'jquery': '$',
-    'bson': 'bson'
-  },
   node: {
     net: 'empty',
     tls: 'empty',
