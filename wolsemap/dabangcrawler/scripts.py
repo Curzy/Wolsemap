@@ -5,13 +5,13 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 
 
-
 def preset_subway_lines():
     Line.objects.all().delete()
     SUBWAY_LINES = ('1호선', '2호선', '3호선', '4호선', '5호선', '6호선', '7호선', '8호선', '9호선', '분당선', '신분당선', '경의선', '중앙선', '공항철도', '용인에버라인')
 
     for i in SUBWAY_LINES:
         l = Line.objects.create(lines=i)
+
 
 def insert_stations(station_id_start, station_id_end):
     Station.objects.all().delete()
@@ -38,8 +38,8 @@ def insert_stations(station_id_start, station_id_end):
         station_name = station_info['subway']['name']
         station_lines = station_info['subway']['line']
 
-        station_object = Station.objects.create(station_id=station_id,
-                                                station_name=station_name)
+        station_object = Station.objects.create(dabang_id=station_id,
+                                                name=station_name)
         for line in station_lines:
             try:
                 line = Line.objects.get(lines=line)
