@@ -116,7 +116,7 @@ def insert_price(station_id):
         average = averaging(crawled)
         deposit = average[2]
         price = average[3]
-        station = Station.objects.get(station_id=station_id)
+        station = Station.objects.get(dabang_id=station_id)
         price_object = Price.objects.create(station=station, deposit=deposit, price=price)
         print(str(station_id) + ' ' + str(price_object.station.station_name) + ' ' + str(price_object.deposit) + '/' + str(price_object.price))
         return price_object.station.station_name, price_object.deposit, price_object.price
