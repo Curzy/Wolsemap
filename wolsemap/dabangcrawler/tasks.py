@@ -145,10 +145,8 @@ def insert_prices(station_id_start, station_id_end):
             try:
                 station_info = future.result()
             except Exception as e:
-                print(
-                    'station id : {station_id} generated an exception: {e}'
-                    .format(station_id=station_id, e=e)
-                )
+                print('station id : {station_id} generated an exception: {e}'
+                      .format(station_id=station_id, e=e))
             if station_info:
                 recent_price_dict[station_id] = station_info
 
