@@ -17,7 +17,7 @@ class StationRecord extends React.Component {
     this.getStationRecord(nextProps.stationId);
   }
   getStationRecord(stationId) {
-    let that = this;
+    const that = this;
     let stationRecord = {};
     request(location.origin + '/wolsemap/station/' + stationId + '/', function(error, response, body) {
       if (!error && response.statusCode == 200) {
@@ -29,10 +29,10 @@ class StationRecord extends React.Component {
     });
   }
   render() {
-    let stationRecord = this.state.stationRecord;
-    let title = stationRecord.name + ' ' + stationRecord.line;
-    let data = stationRecord.price_history;
-    let parseDate = d3.time.format('%Y-%m-%d').parse;
+    const stationRecord = this.state.stationRecord;
+    const title = stationRecord.name + ' ' + stationRecord.line;
+    const data = stationRecord.price_history;
+    const parseDate = d3.time.format('%Y-%m-%d').parse;
 
     let priceDomain = d3.extent(data, (d)=> {return d.price;});
     let depositDomain = d3.extent(data, (d)=> {return d.deposit;});
