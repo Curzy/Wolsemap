@@ -2,16 +2,15 @@
 from __future__ import absolute_import
 
 import os
-
-from celery import shared_task
-
-from django.conf import settings
-
-from .models import Station, Price
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import urllib.request
 import json
 import zlib
+
+from celery import shared_task
+from django.conf import settings
+from .models import Station, Price
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from urllib.parse import urljoin
 
 PROJECT_PATH = settings.PROJECT_PATH
 
@@ -21,28 +20,33 @@ SUBWAY_LINES = ('1호선', '2호선', '3호선', '4호선', '5호선', '6호선'
 
 
 def crawl_dabang(station_id, page_number):
-    ROOMSIZE_MIN = 16
-    ROOMSIZE_MAX = 33
-
-    DEPOSIT_MIN = 0
-    DEPOSIT_MAX = 5000
-
-    PRICE_MIN = 10
-    PRICE_MAX = 999999
-
     # 방 종류 list로 / 0: 원룸, 1: 1.5룸,
     # 2: 투룸, 3: 쓰리룸, 4: 오피스텔, 5: 아파트
-    ROOMTYPE = [0]
-
     # 검색조건 room-type 0 = 월세만, deposit-range 보증금,
     # price-range 범위, room-size 5평 - 10평 사이
-    url = ('http://www.dabangapp.com/api/2/room/list/subway?'
-           + 'filters={"room-type":' + str(ROOMTYPE) + ',"room-size":['
-           + str(ROOMSIZE_MIN) + ',' + str(ROOMSIZE_MAX)
-           + '],"deposit-range":[' + str(DEPOSIT_MIN) + ',' + str(DEPOSIT_MAX)
-           + '],"price-range":[' + str(PRICE_MIN) + ',' + str(PRICE_MAX)
-           + ']}&id=' + str(station_id) + '&page=' + str(page_number))
+    search_params = dict(
+        room_type=[0],
+        room_size_min=16,
+        room_size_max=33,
+        deposit_min=0,
+        deposit_max=5000,
+        price_min=10,
+        price_max=999999
+    )
 
+    base_url = 'http://www.dabangapp.com/api/2/room/list/'
+    station_page = 'subway?id={station_id}&page={page_number}'.format(
+        station_id=station_id,
+        page_number=page_number
+    )
+    filters = (
+        '&filters={{"room-type":{room_type},'
+        '"room-size":[{room_size_min},{room_size_max}],'
+        '"deposit-range":[{deposit_min},{deposit_max}],'
+        '"price-range":[{price_min},{price_max}]}}'
+    ).format(**search_params)
+
+    url = urljoin(base_url, ''.join([station_page, filters]))
     request = urllib.request.Request(url, headers={'Accept-Encoding': 'gzip'})
     response = urllib.request.urlopen(request)
     dump = zlib.decompress(response.read(), 47).decode('utf-8')

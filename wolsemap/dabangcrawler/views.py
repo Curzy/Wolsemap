@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
 
-from dabangcrawler.models import Station
+from .models import Station
 
 
 class IndexView(generic.View):
@@ -33,7 +33,6 @@ class StationListView(generic.View):
 
 class StationRecordView(generic.View):
     def get(self, request, station_id, *args, **kwargs):
-        station_record = dict()
         if station_id:
             station = Station.objects.get(dabang_id=station_id)
             lines = station.line.order_by().values_list('name', flat=True)
