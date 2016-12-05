@@ -1,6 +1,10 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const Dashboard = require('webpack-dashboard');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+const dashboard = new Dashboard();
 
-module.exports = {
+const common = {
   context: __dirname,
   entry: {
     index: './index.js',
@@ -38,7 +42,8 @@ module.exports = {
       name: 'common',
       filename: 'commons.js',
       minChunks: 2
-    })
+    }),
+    new DashboardPlugin(dashboard.setData),
   ],
   node: {
     net: 'empty',
@@ -46,3 +51,5 @@ module.exports = {
     fs: 'empty'
   }
 };
+
+module.exports = common;
