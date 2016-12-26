@@ -14,6 +14,8 @@ class Station(models.Model):
     line = models.ManyToManyField(Line)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
+    latitude = models.FloatField(null=True)
+    longitude = models.FloatField(null=True)
 
     def __str__(self):
         info = ' '.join(
@@ -23,6 +25,13 @@ class Station(models.Model):
 
 
 class Price(models.Model):
+    SOURCE_DABANG = 1
+    SOURCE_ZIGBANG = 2
+
+    SOURCE_CHOICES = (
+        (SOURCE_DABANG, 'DABANG'),
+        (SOURCE_ZIGBANG, 'ZIGBANG')
+    )
 
     class Meta:
         get_latest_by = 'created_at'
@@ -30,6 +39,7 @@ class Price(models.Model):
     station = models.ForeignKey(Station, related_name='price_history')
     deposit = models.IntegerField()
     price = models.IntegerField()
+    source = models.SmallIntegerField(choices=SOURCE_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 

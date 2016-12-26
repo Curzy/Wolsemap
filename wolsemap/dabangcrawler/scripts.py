@@ -1,17 +1,17 @@
 from __future__ import absolute_import
 from .models import Line, Station
-from .tasks import crawl_dabang
+from .tasks import crawl_dabang, get_zigbang_stations
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 
 
 def preset_subway_lines():
     Line.objects.all().delete()
-    SUBWAY_LINES = ('1호선', '2호선', '3호선', '4호선', '5호선', '6호선',
+    subway_lines = ('1호선', '2호선', '3호선', '4호선', '5호선', '6호선',
                     '7호선', '8호선', '9호선', '분당선', '신분당선', '경의선',
                     '중앙선', '공항철도', '용인에버라인')
 
-    for line_name in SUBWAY_LINES:
+    for line_name in subway_lines:
         Line.objects.create(name=line_name)
 
 
@@ -34,9 +34,7 @@ def insert_stations(station_id_start, station_id_end):
                 if station_info:
                     station_price_dict[station_id] = station_info
             except Exception as e:
-                print('station id : {station_id} generated an exception: {e}'
-                      .format(station_id=station_id,
-                              e=e))
+                print(f'station id : {station_id} generated an exception: {e}')
 
     for station_id in list(station_price_dict.keys()):
         station_info = station_price_dict[station_id]
@@ -52,10 +50,20 @@ def insert_stations(station_id_start, station_id_end):
                 station_object.station_lines.add(line)
                 station_object.save()
             except Exception as e:
-                print('station id : {station_id} generated an exception: {e}'
-                      .format(station_id=station_id,
-                              e=e))
+                print(f'station id : {station_id} generated an exception: {e}')
         print(station_id, station_name, station_lines)
 
     duration = time.time() - start
     print('Station db set time :', duration)
+
+
+def insert_station_coordinate():
+    stations = get_zigbang_stations()
+
+    for station in stations:
+        name = station['name']
+        latitude = station['location'][0]
+        longitude = station['location'][1]
+
+        Station.objects.filter(name=name).update(latitude=latitude,
+                                                 longitude=longitude)
