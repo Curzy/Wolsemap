@@ -143,9 +143,13 @@ CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 CELERYBEAT_SCHEDULE = {
     'dabangcrawler.tasks.insert_prices': {
         'task': 'dabangcrawler.tasks.insert_prices',
-        'schedule': crontab(minute=0, hour=0),
+        'schedule': crontab(minute=10, hour=0),
         'args': (1, 789),
     },
+    'dabangcrawler.tasks.price_to_map': {
+        'task': 'dabangcrawler.tasks.price_to_map',
+        'schedule': crontab(minute=40, hour=0)
+    }
 }
 # Application definition
 

@@ -1,8 +1,12 @@
 from __future__ import absolute_import
-from .models import Line, Station
-from .tasks import crawl_dabang, get_zigbang_stations
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import json
 import time
+
+from urllib.request import Request, urlopen
+
+from .models import Line, Station
+from .tasks import crawl_dabang
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 def preset_subway_lines():
@@ -55,6 +59,17 @@ def insert_stations(station_id_start, station_id_end):
 
     duration = time.time() - start
     print('Station db set time :', duration)
+
+
+def get_zigbang_stations():
+    url = 'https://api.zigbang.com/v1/search/subway?q='
+
+    request = Request(url)
+    response = urlopen(request)
+
+    station_data = json.loads(response.read())
+
+    return station_data
 
 
 def insert_station_coordinate():

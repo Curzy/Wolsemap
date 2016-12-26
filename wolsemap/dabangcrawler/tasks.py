@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
 import os
@@ -11,7 +10,6 @@ from django.conf import settings
 from django.db.models import Avg
 
 from .models import Station, Price
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.request import Request, urlopen
 from urllib.parse import urljoin
 
@@ -47,7 +45,7 @@ def crawl_dabang(station_id, page_number):
     station_data = json.loads(dump)
     response.close()
 
-    return station_data if validate_station(station_data) else False
+    return station_data if validate_station(station_data) else None
 
 
 def validate_station(station):
@@ -113,7 +111,7 @@ def dabang_averaging(station_info):
 
 
 @shared_task
-def insert_price(station_id):
+def insert_dabang_price(station_id):
     crawled = crawl_dabang(station_id, page_number=1)
     if crawled:
         average = dabang_averaging(crawled)
@@ -126,99 +124,63 @@ def insert_price(station_id):
         print(str(station_id) + ' ' + str(price_object.station.name) + ' '
               + str(price_object.deposit) + '/' + str(price_object.price) + ' '
               + str(price_object.get_source_display()))
-        return (price_object.station.name,
-                price_object.deposit,
-                price_object.price)
+    else:
+        raise AttributeError
 
 
 @shared_task
 def insert_prices(station_id_start, station_id_end):
-
-    with ThreadPoolExecutor(max_workers=15) as executor:
-        future_to_id = dict(
-            (executor.submit(insert_price, station_id), station_id)
-            for station_id in range(station_id_start, station_id_end)
-        )
-        for future in as_completed(future_to_id):
-            station_id = future_to_id[future]
-            try:
-                future.result()
-            except Exception as e:
-                print(f'station id : {station_id} generated an exception: {e}')
-
     zigbang_coordinates = get_zigbang_coordinates()
-    with ThreadPoolExecutor(max_workers=15) as executor:
-        future_to_id = dict(
-            (executor.submit(
-                insert_zigbang_price,
-                *[
-                    station_id,
-                    zigbang_coordinates.get(station_id, dict()).get('latitude'),
-                    zigbang_coordinates.get(station_id, dict()).get('longitude')
-                ]
-            ), station_id)
-            for station_id in range(station_id_start, station_id_end)
-        )
-        for future in as_completed(future_to_id):
-            station_id = future_to_id[future]
-            try:
-                future.result()
-            except Exception as e:
-                print(f'station id : {station_id} generated an exception: {e}')
 
-    with open(
-        os.path.join(
-            PROJECT_PATH,
-            'dabangcrawler/maps/Seoul_subway_linemap_ko.svg'
-        ), 'r'
-    ) as original_map_f:
-        with open(
-            os.path.join(
-                PROJECT_PATH,
-                'dabangcrawler/static/svg/price_inserted_subway_linemap.svg'
-            ), 'w'
-        ) as subway_price_map_f:
-            price_to_map(original_map_f, subway_price_map_f)
+    for station_id in range(station_id_start, station_id_end):
+        if station_id in zigbang_coordinates:
+            insert_dabang_price.delay(station_id)
+            latitude = zigbang_coordinates[station_id].get('latitude', 0)
+            longitude = zigbang_coordinates[station_id].get('longitude', 0)
+            insert_zigbang_price.delay(station_id, latitude, longitude)
 
 
 @shared_task
-def price_to_map(original_subway_map, subway_price_map):
-    original_map = original_subway_map.read()
-    recent_prices = Price.objects.filter(
-        created_at__gte=datetime.date.today()
-    ).values('station').annotate(
-        Avg('deposit'), Avg('price')
-    ).values_list('station__name', 'deposit__avg', 'price__avg')
+def price_to_map():
+    with open(
+            os.path.join(
+                PROJECT_PATH,
+                'dabangcrawler/maps/Seoul_subway_linemap_ko.svg'
+            ), 'r'
+    ) as original_map_f:
+        with open(
+                os.path.join(
+                    PROJECT_PATH,
+                    'dabangcrawler/static/svg/price_inserted_subway_linemap.svg'
+                ), 'w'
+        ) as subway_price_map_f:
+            original_map = original_map_f.read()
+            recent_prices = Price.objects.filter(
+                created_at__gte=datetime.date.today()
+            ).values('station').annotate(
+                Avg('deposit'), Avg('price')
+            ).values_list('station__name', 'deposit__avg', 'price__avg')
 
-    for station_name, deposit, price in recent_prices:
-        station_name_without_yeok = station_name[0:-1]
+            for station_name, deposit, price in recent_prices:
+                station_name_without_yeok = station_name[0:-1]
 
-        deposit = int(round(deposit, -2))
-        price = int(round(price, -1))
+                deposit = int(round(deposit, -2))
+                price = int(round(price, -1))
 
-        station_price = str(deposit) + "/" + str(price)
+                station_price = str(deposit) + "/" + str(price)
 
-        name_with_price = station_name_without_yeok + ' ' + station_price
+                name_with_price = ' '.join([station_name_without_yeok,
+                                            station_price])
 
-        original_map = original_map.replace(
-            '>' + station_name_without_yeok + '<', '>' + name_with_price + '<'
-        )
+                original_map = original_map.replace(
+                    '>' + station_name_without_yeok + '<',
+                    '>' + name_with_price + '<'
+                )
 
-    subway_price_map.write(original_map)
-    os.system('echo yes | python manage.py collectstatic')
+            subway_price_map_f.write(original_map)
+            os.system('echo yes | python manage.py collectstatic')
 
     return True
-
-
-def get_zigbang_stations():
-    url = 'https://api.zigbang.com/v1/search/subway?q='
-
-    request = Request(url)
-    response = urlopen(request)
-
-    station_data = json.loads(response.read())
-
-    return station_data
 
 
 def get_zigbang_room_ids(latitude, longitude):
@@ -258,7 +220,6 @@ def get_zigbang_room_ids(latitude, longitude):
 
 
 def get_zigbang_coordinates():
-
     station_coordinates = dict()
     for dabang_id, latitude, longitude in Station.objects.values_list(
             'dabang_id', 'latitude', 'longitude'):
@@ -301,23 +262,20 @@ def crawl_zigbang(latitude, longitude):
     return average_deposit, average_price
 
 
+@shared_task
 def insert_zigbang_price(dabang_id, latitude, longitude):
-    if not latitude or longitude:
-        return
+    if latitude and longitude:
+        average = crawl_zigbang(latitude, longitude)
 
-    average = crawl_zigbang(latitude, longitude)
+        deposit = average[0]
+        price = average[1]
 
-    deposit = average[0]
-    price = average[1]
-
-    station = Station.objects.get(dabang_id=dabang_id)
-    price_object = Price.objects.create(
-        station=station, deposit=deposit,
-        price=price, source=Price.SOURCE_ZIGBANG)
-    print(str(dabang_id) + ' ' + str(price_object.station.name) + ' '
-          + str(price_object.deposit) + '/' + str(price_object.price) + ' '
-          + str(price_object.get_source_display()))
-
-    return (price_object.station.name,
-            price_object.deposit,
-            price_object.price)
+        station = Station.objects.get(dabang_id=dabang_id)
+        price_object = Price.objects.create(
+            station=station, deposit=deposit,
+            price=price, source=Price.SOURCE_ZIGBANG)
+        print(str(dabang_id) + ' ' + str(price_object.station.name) + ' '
+              + str(price_object.deposit) + '/' + str(price_object.price) + ' '
+              + str(price_object.get_source_display()))
+    else:
+        raise AttributeError
