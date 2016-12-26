@@ -148,7 +148,7 @@ CELERYBEAT_SCHEDULE = {
     },
     'dabangcrawler.tasks.price_to_map': {
         'task': 'dabangcrawler.tasks.price_to_map',
-        'schedule': crontab(minute=40, hour=0)
+        'schedule': crontab(minute=10, hour=1)
     }
 }
 # Application definition
