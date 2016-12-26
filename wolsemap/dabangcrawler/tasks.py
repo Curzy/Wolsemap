@@ -303,7 +303,7 @@ def crawl_zigbang(latitude, longitude):
 
 def insert_zigbang_price(dabang_id, latitude, longitude):
     if not latitude or longitude:
-        pass
+        return
 
     average = crawl_zigbang(latitude, longitude)
 
