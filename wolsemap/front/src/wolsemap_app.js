@@ -38,7 +38,7 @@ class WolsemapApp extends React.Component {
   render() {
     return (
         <div>
-          <Title title='수도권 월세 노선도' description="매일밤 0시에 갱신됩니다"/>
+          <Title title='수도권 월세 노선도' description="매일밤 다방과 직방에서 새로운 정보를 가져옵니다"/>
           <div>
             <Select
               name="station-selector"
