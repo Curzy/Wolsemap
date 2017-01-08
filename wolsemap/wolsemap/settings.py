@@ -151,6 +151,3 @@ CELERYBEAT_SCHEDULE = {
         'schedule': crontab(minute=10, hour=1)
     }
 }
-# Application definition
-
-

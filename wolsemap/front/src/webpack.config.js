@@ -7,7 +7,6 @@ const dashboard = new Dashboard();
 const common = {
   context: __dirname,
   entry: {
-    index: './index.js',
     wolsemap: './wolsemap_app.js'
   },
   output: {

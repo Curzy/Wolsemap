@@ -39,7 +39,7 @@ class WolsemapApp extends React.Component {
     return (
         <div>
           <Title title='수도권 월세 노선도' description="매일밤 다방과 직방에서 새로운 정보를 가져옵니다"/>
-          <div>
+          <div className="station-searchbar">
             <Select
               name="station-selector"
               value={this.state.selectedStation}
