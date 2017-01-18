@@ -43,7 +43,9 @@ class StationRecordView(generic.View):
                      price=price)
                 for date, deposit, price in station.price_history.extra(
                     select={'created_date': 'DATE(created_at)'}
-                ).annotate(Avg('deposit'), Avg('price')).values_list(
+                ).values('created_date').annotate(
+                    Avg('deposit'), Avg('price')
+                ).values_list(
                     'created_date', 'deposit__avg', 'price__avg'
                 ).order_by('-created_at')
             ]
