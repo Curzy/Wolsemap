@@ -1,5 +1,6 @@
 import json
 
+from django.db.models import Avg
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
@@ -37,11 +38,13 @@ class StationRecordView(generic.View):
             station = Station.objects.get(dabang_id=station_id)
             lines = station.line.order_by().values_list('name', flat=True)
             price_history = [
-                dict(date=price['created_at'].strftime('%Y-%m-%d'),
-                     deposit=price['deposit'],
-                     price=price['price'])
-                for price in station.price_history.values(
-                    'deposit', 'price', 'created_at'
+                dict(date=date,
+                     deposit=deposit,
+                     price=price)
+                for date, deposit, price in station.price_history.extra(
+                    select={'created_date': 'DATE(created_at)'}
+                ).annotate(Avg('deposit'), Avg('price')).values_list(
+                    'created_date', 'deposit__avg', 'price__avg'
                 ).order_by('-created_at')
             ]
             station_record = dict(
