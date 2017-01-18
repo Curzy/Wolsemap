@@ -47,7 +47,7 @@ class StationRecordView(generic.View):
                     Avg('deposit'), Avg('price')
                 ).values_list(
                     'created_date', 'deposit__avg', 'price__avg'
-                ).order_by('-created_at')
+                ).order_by('-created_date')
             ]
             station_record = dict(
                 id=station.dabang_id,
