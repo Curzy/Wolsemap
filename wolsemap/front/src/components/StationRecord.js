@@ -53,7 +53,7 @@ class StationRecord extends React.Component {
                 name: '월세',
                 color: '#03C5F3',
                 style: {
-                  "strokeWidth": 5,
+                  "strokeWidth": 3,
                   "strokeOpacity": 0.7,
                   "fillOpacity": 0.7
                 }
@@ -80,7 +80,7 @@ class StationRecord extends React.Component {
                 name: '보증금',
                 color: '#029CDA',
                 style: {
-                  "strokeWidth": 5,
+                  "strokeWidth": 3,
                   "strokeOpacity": 0.7,
                   "fillOpacity": 0.7
                 }
