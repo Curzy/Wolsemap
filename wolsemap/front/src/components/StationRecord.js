@@ -1,5 +1,3 @@
-import 'styles/mystyle.css';
-
 import React from 'react';
 import request from 'request';
 import { Chart } from 'react-d3-core';

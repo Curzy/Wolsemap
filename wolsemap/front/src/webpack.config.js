@@ -28,7 +28,7 @@ const common = {
       },
       {test: /\.jsx$/, loader: 'jsx'},
       {test: /\.css$/, loader: 'style!css'},
-      {test: /\.less$/, loader: 'style!css!less'},
+      {test: /\.scss$/, loader: 'style!css!sass'},
       {test: /\.svg$/, loader: 'svg-loader'}
     ]
   },

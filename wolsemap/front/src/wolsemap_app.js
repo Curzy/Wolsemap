@@ -1,4 +1,4 @@
-import 'styles/mystyle.css';
+import 'styles/wolsemap.scss';
 import 'react-select/dist/react-select.css';
 
 import React from 'react';
