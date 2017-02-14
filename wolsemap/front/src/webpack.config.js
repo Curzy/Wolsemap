@@ -1,4 +1,6 @@
 const webpack = require('webpack');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const merge = require('webpack-merge');
 const Dashboard = require('webpack-dashboard');
 const DashboardPlugin = require('webpack-dashboard/plugin');
@@ -37,12 +39,15 @@ const common = {
     extensions: ['', '.js', '.jsx', 'css', 'les']
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
+    new CommonsChunkPlugin({
       name: 'common',
       filename: 'commons.js',
       minChunks: 2
     }),
     new DashboardPlugin(dashboard.setData),
+    new UglifyJsPlugin({
+      sourceMap: false
+    })
   ],
   node: {
     net: 'empty',
