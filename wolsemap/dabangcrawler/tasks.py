@@ -11,7 +11,7 @@ from django.db.models import Avg
 
 from .models import Station, Price
 from urllib.request import Request, urlopen
-from urllib.parse import urljoin
+from urllib.parse import urljoin, quote
 
 PROJECT_PATH = settings.PROJECT_PATH
 
@@ -21,6 +21,7 @@ def crawl_dabang(station_id, page_number):
     # 2: 투룸, 3: 쓰리룸, 4: 오피스텔, 5: 아파트
     # 검색조건 room-type 0 = 월세만, deposit-range 보증금,
     # price-range 범위, room-size 5평 - 10평 사이
+    # deal-type 0 = 중개, 1 = 직거래
     room_type = [0]
     room_size_min = 16
     room_size_max = 33
@@ -28,17 +29,19 @@ def crawl_dabang(station_id, page_number):
     deposit_max = 5000
     price_min = 10
     price_max = 999999
+    deal_type = [0, 1]
 
-    base_url = 'http://www.dabangapp.com/api/2/room/list/'
-    station_page = f'subway?id={station_id}&page={page_number}'
+    base_url = 'https://www.dabangapp.com/api/2/room/list/'
+    station_page = f'subway?id={station_id}&page={page_number}&'
     filters = (
-        f'&filters={{"room-type":{room_type},'
+        f'filters={{"room-type":{room_type},'
         f'"room-size":[{room_size_min},{room_size_max}],'
         f'"deposit-range":[{deposit_min},{deposit_max}],'
-        f'"price-range":[{price_min},{price_max}]}}'
+        f'"price-range":[{price_min},{price_max}],'
+        f'"deal-type":[{deal_type[0]},{deal_type[1]}]}}'
     )
 
-    url = urljoin(base_url, ''.join([station_page, filters]))
+    url = urljoin(base_url, ''.join([station_page, quote(filters)]))
     request = Request(url, headers={'Accept-Encoding': 'gzip'})
     response = urlopen(request)
     dump = zlib.decompress(response.read(), 47).decode('utf-8')
