@@ -4,6 +4,8 @@ import os
 import json
 import zlib
 import datetime
+import logging
+import logging.handlers
 
 from celery import shared_task
 from django.conf import settings
@@ -124,11 +126,45 @@ def insert_dabang_price(station_id):
         price_object = Price.objects.create(
             station=station, deposit=deposit,
             price=price, source=Price.SOURCE_DABANG)
-        print(str(station_id) + ' ' + str(price_object.station.name) + ' '
-              + str(price_object.deposit) + '/' + str(price_object.price) + ' '
-              + str(price_object.get_source_display()))
+
+        log = (
+            f'{station_id} {price_object.station.name}'
+            f'{price_object.deposit}/{price_object.price}'
+            f'{price_object.get_source_display()}'
+        )
+
+        save_log(log)
     else:
         raise AttributeError
+
+
+def save_log(message):
+    directory_name = 'logs'
+    file_name = 'wolsemap.log'
+
+    if not os.path.exists(directory_name):
+        os.mkdir(directory_name)
+
+    logger = logging.getLogger('wolsemap_logger')
+
+    logger.setLevel(logging.INFO)
+
+    formatter = logging.Formatter(
+        '[%(levelname)s|%(filename)s:%(lineno)s] %(asctime)s > %(message)s')
+
+    file_hdlr = logging.handlers.TimedRotatingFileHandler(
+        f'{directory_name}/{file_name}', when='D', interval=1
+    )
+
+    stream_hdlr = logging.StreamHandler()
+
+    file_hdlr.setFormatter(formatter)
+    stream_hdlr.setFormatter(formatter)
+
+    logger.addHandler(file_hdlr)
+    logger.addHandler(stream_hdlr)
+
+    logger.info(message)
 
 
 @shared_task
@@ -277,8 +313,12 @@ def insert_zigbang_price(dabang_id, latitude, longitude):
         price_object = Price.objects.create(
             station=station, deposit=deposit,
             price=price, source=Price.SOURCE_ZIGBANG)
-        print(str(dabang_id) + ' ' + str(price_object.station.name) + ' '
-              + str(price_object.deposit) + '/' + str(price_object.price) + ' '
-              + str(price_object.get_source_display()))
+
+        log = (
+            f'{dabang_id} {price_object.station.name}'
+            f'{price_object.deposit}/{price_object.price}'
+            f'{price_object.get_source_display()}'
+        )
+        save_log(log)
     else:
         raise AttributeError
