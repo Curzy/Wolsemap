@@ -127,15 +127,20 @@ def insert_dabang_price(station_id):
             station=station, deposit=deposit,
             price=price, source=Price.SOURCE_DABANG)
 
-        log = (
-            f'{station_id} {price_object.station.name}'
-            f'{price_object.deposit}/{price_object.price}'
-            f'{price_object.get_source_display()}'
-        )
-
-        save_log(log)
+        message = make_log_message(station_id, price_object)
+        save_log(message)
     else:
         raise AttributeError
+
+
+def make_log_message(station_id, price_object):
+    message = (
+        f'{station_id} {price_object.station.name}'
+        f'{price_object.deposit}/{price_object.price}'
+        f'{price_object.get_source_display()}'
+    )
+
+    return message
 
 
 def save_log(message):
@@ -314,11 +319,7 @@ def insert_zigbang_price(dabang_id, latitude, longitude):
             station=station, deposit=deposit,
             price=price, source=Price.SOURCE_ZIGBANG)
 
-        log = (
-            f'{dabang_id} {price_object.station.name}'
-            f'{price_object.deposit}/{price_object.price}'
-            f'{price_object.get_source_display()}'
-        )
-        save_log(log)
+        message = make_log_message(dabang_id, price_object)
+        save_log(message)
     else:
         raise AttributeError
