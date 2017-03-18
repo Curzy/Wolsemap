@@ -135,8 +135,8 @@ def insert_dabang_price(station_id):
 
 def make_log_message(station_id, price_object):
     message = (
-        f'{station_id} {price_object.station.name}'
-        f'{price_object.deposit}/{price_object.price}'
+        f'{station_id} {price_object.station.name} '
+        f'{price_object.deposit}/{price_object.price} '
         f'{price_object.get_source_display()}'
     )
 
