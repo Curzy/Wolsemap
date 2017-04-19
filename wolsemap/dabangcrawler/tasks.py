@@ -18,6 +18,34 @@ from urllib.parse import urljoin, quote
 PROJECT_PATH = settings.PROJECT_PATH
 
 
+class WolsemapLogger(object):
+
+    directory_name = 'logs'
+    file_name = 'wolsemap.log'
+
+    if not os.path.exists(directory_name):
+        os.mkdir(directory_name)
+
+    logger = logging.getLogger('wolsemap_logger')
+
+    logger.setLevel(logging.INFO)
+
+    formatter = logging.Formatter(
+        '[%(levelname)s|%(filename)s:%(lineno)s] %(asctime)s > %(message)s')
+
+    file_hdlr = logging.handlers.TimedRotatingFileHandler(
+        f'{directory_name}/{file_name}', when='D', interval=1
+    )
+
+    stream_hdlr = logging.StreamHandler()
+
+    file_hdlr.setFormatter(formatter)
+    stream_hdlr.setFormatter(formatter)
+
+    logger.addHandler(file_hdlr)
+    logger.addHandler(stream_hdlr)
+
+
 def crawl_dabang(station_id, page_number):
     # 방 종류 list로 / 0: 원룸, 1: 1.5룸,
     # 2: 투룸, 3: 쓰리룸, 4: 오피스텔, 5: 아파트
@@ -128,7 +156,7 @@ def insert_dabang_price(station_id):
             price=price, source=Price.SOURCE_DABANG)
 
         message = make_log_message(station_id, price_object)
-        save_log(message)
+        WolsemapLogger.logger.info(message)
     else:
         raise AttributeError
 
@@ -141,35 +169,6 @@ def make_log_message(station_id, price_object):
     )
 
     return message
-
-
-def save_log(message):
-    directory_name = 'logs'
-    file_name = 'wolsemap.log'
-
-    if not os.path.exists(directory_name):
-        os.mkdir(directory_name)
-
-    logger = logging.getLogger('wolsemap_logger')
-
-    logger.setLevel(logging.INFO)
-
-    formatter = logging.Formatter(
-        '[%(levelname)s|%(filename)s:%(lineno)s] %(asctime)s > %(message)s')
-
-    file_hdlr = logging.handlers.TimedRotatingFileHandler(
-        f'{directory_name}/{file_name}', when='D', interval=1
-    )
-
-    stream_hdlr = logging.StreamHandler()
-
-    file_hdlr.setFormatter(formatter)
-    stream_hdlr.setFormatter(formatter)
-
-    logger.addHandler(file_hdlr)
-    logger.addHandler(stream_hdlr)
-
-    logger.info(message)
 
 
 @shared_task
@@ -320,6 +319,6 @@ def insert_zigbang_price(dabang_id, latitude, longitude):
             price=price, source=Price.SOURCE_ZIGBANG)
 
         message = make_log_message(dabang_id, price_object)
-        save_log(message)
+        WolsemapLogger.logger.info(message)
     else:
         raise AttributeError
