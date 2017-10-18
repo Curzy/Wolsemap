@@ -1,4 +1,4 @@
-# [curzy.xyz](http://curzy.xyz/)
+# [wolse.curzy.me](http://wolse.curzy.me/)
 ____
 
 ### 서울 월세 노선도.
