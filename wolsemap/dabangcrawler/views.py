@@ -38,7 +38,7 @@ class StationRecordView(generic.View):
             station = Station.objects.get(dabang_id=station_id)
             lines = station.line.order_by().values_list('name', flat=True)
             price_history = [
-                dict(date=date,
+                dict(date=date.strftime('%Y-%m-%d'),
                      deposit=deposit,
                      price=price)
                 for date, deposit, price in station.price_history.extra(
