@@ -120,12 +120,13 @@ def dabang_averaging(station_info):
         for room in station_info['rooms']:
 
             room_deposit = room['price_info'][0][0]
-            total_deposit += room_deposit
-
             room_price = room['price_info'][0][1]
-            total_price += room_price
 
-            total_rooms += 1
+            if room_deposit <= 5000:
+                total_deposit += room_deposit
+                total_price += room_price
+
+                total_rooms += 1
 
         has_more = station_info['has-more']
         if has_more:
