@@ -15,7 +15,7 @@ class WolsemapApp extends React.Component {
     super();
     this.state = {
       stationList: [],
-      selectedStation: {value: 6, label: '가양역 9호선'},
+      selectedStation: {value: 441, label: '신림역 2호선'},
     };
     this.selectStation = this.selectStation.bind(this);
   }
