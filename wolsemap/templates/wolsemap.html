@@ -1,26 +1,35 @@
-<!DOCTYPE html>
-{% load staticfiles %}
+<!DOCTYPE html> {% load staticfiles %}
 <html>
+
 <head>
-  <script
-      src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script
-      src="http://ariutta.github.io/svg-pan-zoom/dist/svg-pan-zoom.min.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114969781-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-114969781-1');
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://ariutta.github.io/svg-pan-zoom/dist/svg-pan-zoom.min.js"></script>
   <title>월세 지도</title>
 </head>
 
 <body>
-<div id="content"></div>
+  <div id="content"></div>
 
-<script src="{% static 'wolsemap.js' %}"></script>
+  <script src="{% static 'wolsemap.js' %}"></script>
 
-<script>
-  window.onload = function () {
-    svgPanZoom('#subwaysvg', {
-      zoomEnabled: true,
-      controlIconsEnabled: true
-    });
-  };
-</script>
+  <script>
+    window.onload = function () {
+      svgPanZoom('#subwaysvg', {
+        zoomEnabled: true,
+        controlIconsEnabled: true
+      });
+    };
+  </script>
 </body>
+
 </html>
