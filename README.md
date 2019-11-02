@@ -1,4 +1,4 @@
-# [wolse.curzy.me](http://wolse.curzy.me/)
+~[wolse.curzy.me](http://wolse.curzy.me/)~ Server stopped
 ____
 
 ### 서울 월세 노선도.
@@ -20,3 +20,5 @@ ____
 - 네이버 부동산 데이터 활용
 - 지하철 노선도 리디자인
 - Dive in SVG
+
+![wolse curzy me_](https://user-images.githubusercontent.com/3931792/68069897-23e52c00-fdaa-11e9-81c2-fa7b9d1f2058.png)
