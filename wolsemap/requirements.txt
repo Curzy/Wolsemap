@@ -8,6 +8,6 @@ jupyter==1.0.0
 pip==9.0.1
 psycopg2==2.7.3.2
 pylint==1.8.2
-requests==2.11.1
+requests==2.20.0
 uWSGI==2.0.14
 virtualenvwrapper==4.7.2
