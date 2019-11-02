@@ -34,7 +34,7 @@
     "svg-loader": "^0.0.2",
     "webpack": "^4.0.1",
     "webpack-cli": "^2.0.9",
-    "webpack-dev-server": "^1.16.2",
+    "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^1.0.2"
   }
 }
